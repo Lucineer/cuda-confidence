@@ -2,7 +2,12 @@
 name = "cuda-confidence"
 version = "0.1.0"
 edition = "2021"
-description = "Confidence primitive — the foundational type that makes every value uncertain and every computation honest"
+description = "Confidence propagation primitive — harmonic mean fusion, uncertainty quantification"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/Lucineer/cuda-confidence"
+readme = "README.md"
+keywords = ["ai", "fleet", "agent", "rust"]
+categories = ["science"]
 
 [dependencies]
 serde = { version = "1", features = ["derive"] }
