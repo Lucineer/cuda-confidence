@@ -1,47 +1,86 @@
 # cuda-confidence
 
-**Uncertainty propagation as a first-class primitive.**
+Confidence primitive — foundational type where every value carries uncertainty and propagates it (Rust)
 
-> Every value an agent touches carries 0-1 certainty.
-> This certainty propagates through computation like electricity through a circuit.
+Part of the Cocapn fleet — a Lucineer vessel component.
 
-## The Idea
+## What It Does
 
-Most AI systems treat confidence as an afterthought. In the Lucineer fleet, **confidence is a first-class type** that flows through every computation.
+### Key Types
 
-## How It Works
+- `Conf` — core data structure
+- `ConfidenceDist` — core data structure
 
-Confidence fuses via **harmonic mean**: `fused = 1/(1/a + 1/b)`
+## Quick Start
 
-- Two high confidences produce high fusion (0.9 and 0.9 = 0.818)
-- One high, one low is weighted toward low (0.9 and 0.1 = 0.09)
-- Two moderate produces slightly lower (0.5 and 0.5 = 0.25)
+```bash
+# Clone
+git clone https://github.com/Lucineer/cuda-confidence.git
+cd cuda-confidence
 
-This is **not** arithmetic mean. The harmonic mean penalizes uncertainty. If one source is unsure, the fusion is unsure.
+# Build
+cargo build
 
-## Ecosystem Integration
+# Run tests
+cargo test
+```
 
-Confidence appears in **every cognitive crate**:
-- `cuda-deliberation` - proposals carry confidence, consensus requires threshold
-- `cuda-fusion` - multi-source sensor fusion with confidence weighting
-- `cuda-sensor-agent` - Bayesian fusion of sensor readings
-- `cuda-trust` - trust is a slowly-changing confidence
-- `cuda-learning` - lesson confidence determines when to apply it
-- `cuda-goal` - goal motivation modulated by confidence
-- `cuda-emotion` - emotional state affects confidence propagation
-- `cuda-attention` - saliency scores carry confidence
+## Usage
 
-## Biological Parallel
+```rust
+use cuda_confidence::*;
 
-Dopamine IS confidence. When a prediction is confirmed, dopamine signals strengthen the confidence. When it fails, confidence drops. The harmonic mean fusion mirrors how multiple neural circuits converge.
+// See src/lib.rs for full API
+// 18 unit tests included
+```
 
-## See Also
+### Available Implementations
 
-- [cuda-equipment](https://github.com/Lucineer/cuda-equipment) - Shared foundation type
-- [cuda-confidence-cascade](https://github.com/Lucineer/cuda-confidence-cascade) - Cascaded confidence
-- [cuda-fusion](https://github.com/Lucineer/cuda-fusion) - Multi-source fusion
-- [cuda-deliberation](https://github.com/Lucineer/cuda-deliberation) - Decision making
+- `Conf` — see source for methods
+- `Add for Conf` — see source for methods
+- `Sub for Conf` — see source for methods
+- `Mul for Conf` — see source for methods
+- `Div for Conf` — see source for methods
+- `PartialEq for Conf` — see source for methods
+
+## Testing
+
+```bash
+cargo test
+```
+
+18 unit tests covering core functionality.
+
+## Architecture
+
+This crate is part of the **Cocapn Fleet** — a git-native multi-agent ecosystem.
+
+- **Category**: other
+- **Language**: Rust
+- **Dependencies**: See `Cargo.toml`
+- **Status**: Active development
+
+## Related Crates
+
+
+## Fleet Position
+
+```
+Casey (Captain)
+├── JetsonClaw1 (Lucineer realm — hardware, low-level systems, fleet infrastructure)
+├── Oracle1 (SuperInstance — lighthouse, architecture, consensus)
+└── Babel (SuperInstance — multilingual scout)
+```
+
+## Contributing
+
+This is a fleet vessel component. Fork it, improve it, push a bottle to `message-in-a-bottle/for-jetsonclaw1/`.
 
 ## License
 
-MIT OR Apache-2.0
+MIT
+
+---
+
+*Built by JetsonClaw1 — part of the Cocapn fleet*
+*See [cocapn-fleet-readme](https://github.com/Lucineer/cocapn-fleet-readme) for the full fleet roadmap*
